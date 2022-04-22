@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="mainActivityNesnesi" type="com.busedemir.mvvmkullanimi1.MainActivity" />
+        <variable
+            name="sonuc" type='String' />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textSonuc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            android:text="@{sonuc}"
+            android:textColor="@{Integer.parseInt(sonuc) > 0 ? @color/purple_700 : @color/teal_700}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextilkkSayi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39dp"
+            android:ems="10"
+            android:hint="Birinci Sayi"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textSonuc" />
+
+        <EditText
+            android:id="@+id/editTextikinciSayi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="53dp"
+            android:ems="10"
+            android:hint="İkinci Sayi"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextilkkSayi" />
+
+        <Button
+            android:id="@+id/buttonCikarma"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:onClick="@{() -> mainActivityNesnesi.buttonCikarmaTikla(editTextilkkSayi.getText().toString(),editTextikinciSayi.getText().toString())}"
+            android:text="Cikarma"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCarpma"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonToplama" />
+
+        <Button
+            android:id="@+id/buttonToplama"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:onClick="@{() -> mainActivityNesnesi.buttonToplamaTikla(editTextilkkSayi.getText().toString(),editTextikinciSayi.getText().toString())}"
+            android:text="Toplama"
+            app:layout_constraintBottom_toTopOf="@+id/buttonBolme"
+            app:layout_constraintEnd_toStartOf="@+id/buttonCikarma"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/buttonBolme"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:onClick="@{() -> mainActivityNesnesi.buttonBolmeTikla(editTextilkkSayi.getText().toString(),editTextikinciSayi.getText().toString())}"
+            android:text="Bölme"
+            app:layout_constraintBottom_toTopOf="@+id/buttonOrt"
+            app:layout_constraintEnd_toStartOf="@+id/buttonCarpma"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/buttonCarpma"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:onClick="@{() -> mainActivityNesnesi.buttonCarpmaTikla(editTextilkkSayi.getText().toString(),editTextikinciSayi.getText().toString())}"
+            android:text="Carpma"
+            app:layout_constraintBottom_toTopOf="@+id/buttonUs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonBolme" />
+
+        <Button
+            android:id="@+id/buttonOrt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="73dp"
+            android:onClick="@{() -> mainActivityNesnesi.buttonOrtTikla(editTextilkkSayi.getText().toString(),editTextikinciSayi.getText().toString())}"
+            android:text="Ortalama"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonUs"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/buttonUs"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="73dp"
+            android:onClick="@{() -> mainActivityNesnesi.buttonStandartTikla(editTextilkkSayi.getText().toString(),editTextikinciSayi.getText().toString())}"
+            android:text="Üst Alma"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonOrt" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
